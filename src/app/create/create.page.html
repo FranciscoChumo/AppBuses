@@ -1,0 +1,47 @@
+<ion-header>
+ 
+    <ion-tab-button tab="home" routerLink='/pag'>
+      <ion-icon name="home"></ion-icon>
+    </ion-tab-button>
+    
+</ion-header>
+
+<ion-content [fullscreen]="true" class="register-container">
+  <div class="register-header">
+    <img src="assets/icon/imagen.png" alt="Registrar Usuario" class="header-image" />
+    <h2>Registrar Usuario</h2>
+  </div>
+  
+  <form [formGroup]="registerForm" (ngSubmit)="register()" class="register-form">
+    <ion-item class="input-item">
+      <ion-label position="stacked">Usuario</ion-label><br>
+      <ion-input type="text" placeholder="Ingrese su usuario" formControlName="user"></ion-input>
+    </ion-item>
+    <div *ngIf="registerForm.get('user')?.hasError('required') && registerForm.get('user')?.touched">
+      <p>El usuario es requerido.</p>
+    </div>
+
+    <ion-item class="input-item">
+      <ion-label position="stacked">Correo Electrónico</ion-label><br>
+      <ion-input type="email" formControlName="email" placeholder="Ingrese su correo" ></ion-input>
+    </ion-item>
+    <div *ngIf="registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched">
+      <p>El correo electrónico es requerido.</p>
+    </div>
+    <div *ngIf="registerForm.get('email')?.hasError('email') && registerForm.get('email')?.touched">
+      <p>Por favor, ingrese un correo válido.</p>
+    </div>
+
+    <ion-item class="input-item" lines="none">
+      <ion-label position="stacked">Contraseña</ion-label><br>
+      <ion-input type="password" formControlName="password" placeholder="Ingrese su contraseña" >
+        <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+      </ion-input>
+    </ion-item>
+    <div *ngIf="registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched">
+      <p>La contraseña es requerida.</p>
+    </div>
+    <ion-button expand="block" class="register-button" (click)="register()" >Registrar</ion-button>
+  </form>
+  
+</ion-content>

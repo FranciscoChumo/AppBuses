@@ -25,3 +25,78 @@
 #container a {
   text-decoration: none;
 }
+//
+ion-content {
+  --background: #ffffff;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+}
+
+.schedule-container {
+  position: relative;
+  padding-left: 80px;
+}
+
+
+.card-content {
+  display: flex; /* Utiliza flexbox para alinear los elementos en una fila */
+  align-items: center; /* Alinea la imagen y el texto verticalmente */
+  gap: 16px; /* Espacio entre la imagen y el texto, ajusta según sea necesario */
+}
+
+.large-image {
+  width: 150px; /* Ajusta el ancho de la imagen, puedes cambiar el valor según sea necesario */
+  height: auto; /* Mantiene la proporción de la imagen */
+  object-fit: cover; /* Asegura que la imagen se ajuste correctamente */
+  border-radius: 8px; /* Opcional: redondea las esquinas si lo deseas */
+}
+
+.text-content {
+  flex: 1; /* Permite que el contenido de texto ocupe el espacio restante */
+}
+
+ion-card {
+  margin-bottom: 16px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+ion-card-content h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+ion-card-content p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+ion-card-content .duration {
+  font-size: 12px;
+  color: #999;
+  margin-top: 4px;
+}
+
+ion-tab-bar {
+  --background: #ffffff;
+  border-top: 1px solid #e0e0e0;
+}
+
+ion-tab-button {
+  --color: #ff7700;
+  --color-selected: #26ff00;
+}
+
+ion-icon {
+  font-size: 24px;
+}
+
+ion-label {
+  font-size: 12px;
+}

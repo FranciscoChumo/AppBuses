@@ -20,7 +20,14 @@
       <p>Bus #120 to Downtown</p>
       <p class="duration">Duración: 45 minutos</p>
       </div>
+      <div class="button-container" >
+        <ion-button color="warning" class="small-button">
+          <ion-icon slot="icon-only" name="create" ></ion-icon></ion-button>
+        <ion-button color="danger" class="small-button">
+          <ion-icon slot="icon-only" name="trash"></ion-icon></ion-button>
+      </div>
     </div>
+    
   </ion-card>
   
   <ion-card>
@@ -44,12 +51,17 @@
         </div>
       </div>
       </ion-card>
-    
+
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button>
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
 </ion-content>
 
 <ion-tab-bar slot="bottom">
-  <ion-tab-button tab="close" routerLink='/pag'>
-    <ion-icon name="close"></ion-icon>
+  <ion-tab-button tab="exit" routerLink='/pag'>
+    <ion-icon name="exit"></ion-icon>
     <ion-label>Cerrar</ion-label>
   </ion-tab-button>
 
@@ -58,8 +70,12 @@
     <ion-label>Envíos</ion-label>
   </ion-tab-button>
 
-  <ion-tab-button routerLink='/person'>
-    <ion-icon name="person"></ion-icon>
+
+  <ion-tab-button routerLink='/person' id="open-loading">
+    <ion-loading class="custom-loading" trigger="open-loading" message="Loading..." [duration]="3000"></ion-loading>
+    <ion-icon name="person" ></ion-icon>
     <ion-label>{{ users }}</ion-label>
   </ion-tab-button>
+
+  
 </ion-tab-bar>

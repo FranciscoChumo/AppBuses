@@ -1,0 +1,74 @@
+<ion-header [translucent]="true">
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home" (click)="navigateBasedOnRole()">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-header>
+
+<ion-content>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Perfil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list class="profile-container">
+    <ion-item lines="none" class="profile-header">
+      <ion-avatar slot="start">
+        <img src="assets/icon/user.png" alt="Profile">
+      </ion-avatar>
+      <ion-button fill="clear" class="edit-avatar-button">Edit picture or avatar</ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Username</ion-label>
+      <ion-input [value]="profile.user?.user" readonly></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input [value]="profile.user?.email" readonly></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Name</ion-label>
+      <ion-text >{{ profile.user.person?.name }}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Lastname</ion-label>
+      <ion-text >{{ profile.user.person?.lastname }}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">CI</ion-label>
+      <ion-text >{{ profile.user.person?.ci}}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Address</ion-label>
+      <ion-text >{{ profile.user.person?.address }}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Phone</ion-label>
+      <ion-text >{{ profile.user.person?.phone }}</ion-text>
+    </ion-item>
+   
+  </ion-list>
+
+  <ion-list>
+    <ion-item lines="none" class="footer-item" >
+      <ion-loading class="custom-loading" trigger="open-loading" message="Loading..." [duration]="3000"></ion-loading>
+
+      <ion-button id="open-loading" expand="block" fill="clear" shape="round" class="edit-avatar-button" routerLink='/edituser' routerLinkActive="router-link-active" >
+        Edit Personal information
+      </ion-button>
+    </ion-item>
+  
+  </ion-list>
+</ion-content>
+
+

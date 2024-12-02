@@ -1,0 +1,38 @@
+
+
+<ion-content [fullscreen]="true" class="login-container">
+
+  <div class="login-image">
+    <img src="assets/icon/bus.png" alt="Bus Schedule Illustration" />
+  </div>
+
+  <div class="login-form" [formGroup]="registerForm" (ngSubmit)="login()">
+    <ion-item lines="none" class="input-item" >
+      <ion-label position="stacked">Enter your email</ion-label><br>
+      <ion-input type="email" placeholder="Email@email.com" formControlName="email"></ion-input>
+    </ion-item>
+    <div *ngIf="registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched">
+      <p>El correo electrónico es requerido.</p>
+    </div>
+    <div *ngIf="registerForm.get('email')?.hasError('email') && registerForm.get('email')?.touched">
+      <p>Por favor, ingrese un correo válido.</p>
+    </div>
+
+    <ion-item lines="none" class="input-item">
+      <ion-label position="stacked">Enter password</ion-label><br>
+      <ion-input type="password" placeholder="password " formControlName="password">
+        <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+      </ion-input>
+    </ion-item>
+    <div *ngIf="registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched">
+      <p>La contraseña es requerida.</p>
+    </div>
+    
+    <ion-button expand="block" class="join-button" (click)="login()">Ingresar</ion-button>
+
+    <div class="signup-link">
+      <a href="/create">Crear cuenta ? </a>
+    </div>
+  </div>
+
+</ion-content>
