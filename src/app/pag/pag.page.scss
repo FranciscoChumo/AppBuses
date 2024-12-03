@@ -7,7 +7,7 @@
   padding: 0 20px; 
   margin: 0; 
   box-sizing: border-box;
-  background-color: #ffffff;
+  background-color: #fcfaf9f9;
 }
 
 .login-image {
@@ -39,13 +39,16 @@
 ion-label {
   font-size: 1rem;
   color: #333;
+
 }
 
 ion-input {
-  border: 1px solid #ddd;
+  border: 1px solid #aca7a7;
   border-radius: 5px;
   padding: 0.5rem;
   width: 100%;
+  background-color: #dfe5e0;
+
 }
 
 .join-button {
