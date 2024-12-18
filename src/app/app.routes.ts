@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { person } from 'ionicons/icons';
 
 export const routes: Routes = [
   {
@@ -10,6 +11,7 @@ export const routes: Routes = [
     redirectTo: 'pag',
     pathMatch: 'full',
   },
+  
   {
     path: 'pag',
     loadComponent: () => import('./pag/pag.page').then( m => m.PagPage)
@@ -30,4 +32,5 @@ export const routes: Routes = [
     path: 'edituser',
     loadComponent: () => import('./edituser/edituser.page').then( m => m.EdituserPage)
   },
+
 ];

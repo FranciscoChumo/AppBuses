@@ -15,7 +15,7 @@ import{ chevronDownCircle,
   templateUrl: './admin.page.html',
   styleUrls: ['./admin.page.scss'],
   standalone: true,
-  imports: [IonLoading, IonItem, IonInput, IonFabButton, IonFab, IonButton,  IonCard, 
+  imports: [ IonItem, IonInput, IonFabButton, IonFab, IonButton,  IonCard, 
     IonLabel,
     IonIcon, IonTabButton, IonTabBar, IonHeader, 
     IonToolbar , IonContent, RouterLink ],
@@ -29,8 +29,15 @@ users:any;
    }
 
   ngOnInit() {
-   this.users= localStorage.getItem('user');
+    this.updateUserLabel();
+
+   //this.users= localStorage.getItem('user');
 
   }
-
+  ionViewWillEnter() {
+    this.updateUserLabel();
+  }
+  updateUserLabel() {
+    this.users = localStorage.getItem('user') || 'Usuario no encontrado';
+  }
 }

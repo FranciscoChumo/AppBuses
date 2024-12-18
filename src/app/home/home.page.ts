@@ -29,8 +29,15 @@ export class HomePage {
 
   }
   ngOnInit() {
-    this.users= localStorage.getItem('user');
- 
-   }
- 
+    this.updateUserLabel();
+
+   //this.users= localStorage.getItem('user');
+
+  }
+  ionViewWillEnter() {
+    this.updateUserLabel();
+  }
+  updateUserLabel() {
+    this.users = localStorage.getItem('user') || 'Usuario no encontrado';
+  }
 }
