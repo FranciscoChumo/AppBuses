@@ -32,5 +32,9 @@ export const routes: Routes = [
     path: 'edituser',
     loadComponent: () => import('./edituser/edituser.page').then( m => m.EdituserPage)
   },
+  {
+    path: 'ibus',
+    loadComponent: () => import('./ibus/ibus.page').then( m => m.IbusPage)
+  },
 
 ];

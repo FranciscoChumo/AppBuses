@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registrar Autobús</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="busForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Nombre del Autobús</ion-label><br>
+      <ion-input formControlName="buss" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Número</ion-label><br>
+      <ion-input formControlName="Number" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Hora de Salida</ion-label><br>
+      <ion-datetime formControlName="departure_time" ngDefaultControl></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Hora de Llegada</ion-label><br>
+      <ion-datetime formControlName="arrival_time" ngDefaultControl></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Imagen</ion-label><br>
+      <input type="file" (change)="onFileSelected($event)" />
+    </ion-item><br>
+
+    <ion-button expand="block" type="submit" [disabled]="busForm.invalid">
+      Registrar Autobús
+    </ion-button>
+  </form>
+</ion-content>
