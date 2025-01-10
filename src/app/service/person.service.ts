@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class PersonService {
 
   constructor(private http: HttpClient) { }
-  updatePerson(id:number,name:string, lastname:string,ci:string,address:string, phone:number){
+  updatePerson(id:any,name:string, lastname:string,ci:string,address:string, phone:string){
     const data ={
       id:id,
       name:name,
@@ -19,7 +19,7 @@ export class PersonService {
     }
     const header = new HttpHeaders()
     .set('Authorization', `Bearer ${localStorage.getItem('token')}`);
-    return this.http.put<any>('http://127.0.0.1:3000/api/person/'+id, data, { headers: header });
+    return this.http.put<any>(`http://127.0.0.1:3000/api/person/${id}`, data, { headers:header });
   }
   avatarI(id: number, file: File): Observable<any> {
     const formData: FormData = new FormData();

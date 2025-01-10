@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { IonContent, IonHeader,  IonItem, IonLabel, IonList, IonInput, IonAvatar, IonButton, IonIcon, IonTabButton, IonLoading, IonImg, IonTabBar } from '@ionic/angular/standalone';
+import { IonContent, IonHeader,  IonItem, IonLabel, IonList, IonInput,  IonButton, IonIcon, IonTabButton, IonLoading, IonImg, IonTabBar } from '@ionic/angular/standalone';
 import { UsersService } from '../service/users.service';
 import { addIcons } from 'ionicons';
 import { camera, search, person ,mail,create,trash,add,home} from 'ionicons/icons';
@@ -15,9 +15,8 @@ import{ chevronDownCircle,
 import { Router } from '@angular/router';
 import { PersonService } from '../service/person.service';
 import { IUser } from '../interface/IUser';
-import { HttpErrorResponse , HttpHeaders} from '@angular/common/http';
+import {   HttpHeaders} from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-
 import { HttpClient,  } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
@@ -26,7 +25,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './person.page.html',
   styleUrls: ['./person.page.scss'],
   standalone: true,
-  imports: [IonTabBar, IonImg, IonLoading,   IonTabButton, IonIcon, IonAvatar ,IonButton,
+  imports: [IonTabBar, IonImg, IonLoading,   IonTabButton, IonIcon,IonButton,
      IonInput, IonList, IonLabel, IonItem, IonContent,RouterLink,
      IonHeader,   CommonModule, FormsModule,]
 })
@@ -60,10 +59,6 @@ export class PersonPage implements OnInit {
     this.email = email || 'Email no disponible';
   }
 
-  editP() {
-    this.edit = false;
-  }
-
   viewProfile() {
     this.usuarioService.getOneUser(this.personid).subscribe({
       next: (data: any) => {
@@ -75,16 +70,7 @@ export class PersonPage implements OnInit {
     });
   }
   
-  updatePerson() {
-    this.personService.updatePerson(1, "juan", "vera", "23", "porto", 987).subscribe({
-      next: (data: IUser) => {
-        console.log('Usuario actualizado:', data);
-      },
-      error: (error: any) => {
-        console.error('Error al actualizar el usuario:', error);
-      }
-    });
-  }
+  
   loadUserAvatar() {
     const userId = localStorage.getItem('userId'); 
     if (userId) {

@@ -6,52 +6,50 @@
   <br>
   <br>
   <ion-list class="profile-container">
-   
-
-    <ion-item>
-      <ion-label position="stacked">Username</ion-label>
-      <ion-input value="{{ profile.user?.user }}" ></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Email</ion-label>
-      <ion-input value="{{ profile.user?.email }}" ></ion-input>
-    </ion-item>
-
+   <ng-container *ngIf="profile?.user?.person; else loading">
     <ion-item>
       <ion-label position="stacked">Name</ion-label>
-      <ion-input value="{{  profile.user.person?.name }}"></ion-input>
+      <ion-input [(ngModel)]="profile.user.person.name"></ion-input>
     </ion-item>
-
+   </ng-container>
+   
+   <ng-container *ngIf="profile?.user?.person; else loading">
     <ion-item>
       <ion-label position="stacked">Lastname</ion-label>
-      <ion-input value="{{  profile.user.person?.lastname }}"></ion-input>
+      <ion-input [(ngModel)]="profile.user.person.lastname"></ion-input>
     </ion-item>
-
+   </ng-container>
+   <ng-container  *ngIf="profile?.user?.person; else loading">
     <ion-item>
       <ion-label position="stacked">CI</ion-label>
-      <ion-input value="{{  profile.user.person?.ci }}"></ion-input>
+      <ion-input [(ngModel)]="profile.user.person.ci"></ion-input>
     </ion-item>
-
+   </ng-container>
+   <ng-container  *ngIf="profile?.user?.person; else loading">
     <ion-item>
       <ion-label position="stacked">Address</ion-label>
-      <ion-input value="{{  profile.user.person?.address }}"></ion-input>
+      <ion-input [(ngModel)]="profile.user.person.address"></ion-input>
     </ion-item>
-
+   </ng-container>
+   <ng-container *ngIf="profile?.user?.person; else loading">
     <ion-item>
       <ion-label position="stacked">Phone</ion-label>
-      <ion-input value="{{  profile.user.person?.phone }}"></ion-input>
+      <ion-input [(ngModel)]="profile.user.person.phone"></ion-input>
     </ion-item>
-   
+   </ng-container>
   </ion-list>
+  <ng-template #loading>
+    <p>Cargando datos...</p>
+</ng-template>
+
 </ion-content>
 <ion-tab-bar slot="bottom">
-  <ion-tab-button tab="checkmark" routerLink=''>
+  <ion-tab-button tab="checkmark" (click)="updatePerson()">
     <ion-icon name="checkmark" style="color: rgb(15, 1, 163);"></ion-icon>
     <ion-label>Aceptar</ion-label>
   </ion-tab-button>
 
-  <ion-tab-button tab="close">
+  <ion-tab-button tab="close" routerLink="/person" >
   <ion-icon name="close" style="color: rgb(234, 11, 19);"></ion-icon>
     <ion-label>Cancelar</ion-label>
   </ion-tab-button>

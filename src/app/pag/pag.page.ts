@@ -51,6 +51,7 @@ export class PagPage  {
         localStorage.setItem('user',data.dataUser.user);
         localStorage.setItem('email',data.dataUser.email);
         localStorage.setItem('id',data.dataUser.id);
+        localStorage.setItem('idp',data.dataUser.idperson);
         
         if (data&&data.token) {
           const alert =await this.alert.create({
