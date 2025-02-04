@@ -43,6 +43,7 @@
     <div *ngIf="registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched">
       <p>La contraseña es requerida.</p>
     </div>
+    <input type="hidden" formControlName="typeusers_id" [value]="2" />
     <ion-button expand="block" class="register-button" (click)="register()" >Registrar</ion-button>
   </form>
   

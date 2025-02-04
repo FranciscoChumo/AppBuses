@@ -1,80 +1,68 @@
-<ion-header [translucent]="true">
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home" (click)="navigateBasedOnRole()">
-      <ion-icon name="home"></ion-icon>
-      <ion-label>Home</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-header>
 
-<ion-content>
-<ion-list>
-  <div class="avatar-upload">
-    <div class="avatar-preview">
-      <!-- Mostrar la imagen del avatar del usuario -->
-      <ion-img *ngIf="avatarUrl" [src]="avatarUrl" alt="Profile picture" class="avatar-img"></ion-img>
-      <!-- Mostrar la imagen predeterminada si no se tiene avatar -->
-      <ion-img *ngIf="!avatarUrl" src="/assets/icon/user.png" alt="Profile picture" class="avatar-img"></ion-img>
-    </div>
-
-    <!-- Botón para editar el avatar -->
-    <label for="imageUpload" class="avatar-edit">
-      <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" (change)="onImageChange($event)" />
-      <ion-button fill="clear" class="camera-icon">
-        <ion-icon name="camera" slot="icon-only"></ion-icon>
-      </ion-button>
-    </label>
-  </div>
-      
-    <ion-item >
-      <ion-label position="stacked">Name</ion-label>
-      <ion-input [disabled]="edit" value="{{ profile.user?.person?.name }}" ></ion-input>
-    </ion-item>
-
-    <ion-item >
-      <ion-label position="stacked">Lastname</ion-label>
-      <ion-input [disabled]="edit" value="{{ profile.user?.person?.lastname }}"  ></ion-input>
-    </ion-item>
-
-    <ion-item >
-      <ion-label position="stacked">CI</ion-label>
-      <ion-input [disabled]="edit" value="{{ profile.user?.person?.ci }}"></ion-input>
-    </ion-item>
-
-    <ion-item >
-      <ion-label position="stacked">Address</ion-label>
-      <ion-input [disabled]="edit" value="{{ profile.user?.person?.address }}" ></ion-input>
-    </ion-item>
-
-    <ion-item >
-      <ion-label position="stacked">Phone</ion-label>
-      <ion-input  [disabled]="edit" value="{{ profile.user?.person?.phone}}"></ion-input>
-    </ion-item>
-   
-  </ion-list>
-
+<ion-content *ngIf="profile?.user?.person">
   <ion-list>
-    <ion-item lines="none" class="footer-item" >
-      <ion-button routerLink="/edituser" id="open-loading" expand="block" fill="clear" shape="round" class="edit-avatar-button"  >
-        Edit Personal information
-      </ion-button>
+    <br class="avatar-upload">
+      <div class="avatar-preview">
+        <ion-avatar slot="start">
+          <img
+          src="http://localhost:3000/uploads/personas/{{ profile.user.person.photo }}" alt="Profile"/>
+        </ion-avatar>
+      </div><br>
+      <input type="file" #fileInput (change)="changeImage($event)" accept="image/*" hidden>
+
+
+  
+
+    <ion-item>
+      <ion-label position="stacked">Name</ion-label>
+      <ion-input [disabled]="edit" [value]="profile.user.person.name"></ion-input>
     </ion-item>
 
-    <ion-item lines="none" class="footer-item" >
-
-      <ion-button id="open-loading" expand="block" fill="clear" shape="round"  >
-        Edit User
-      </ion-button>
+    <ion-item>
+      <ion-label position="stacked">Lastname</ion-label>
+      <ion-input [disabled]="edit" [value]="profile.user.person.lastname"></ion-input>
     </ion-item>
 
-    <ion-item lines="none" class="footer-item" >
-      <ion-loading class="custom-loading" trigger="open-loading" message="Loading..." [duration]="3000"></ion-loading>
+    <ion-item>
+      <ion-label position="stacked">CI</ion-label>
+      <ion-input [disabled]="edit" [value]="profile.user.person.ci"></ion-input>
+    </ion-item>
 
-      <ion-button id="open-loading" expand="block" fill="clear" shape="round"  >
-        Edit Password
-      </ion-button>
+    <ion-item>
+      <ion-label position="stacked">Address</ion-label>
+      <ion-input [disabled]="edit" [value]="profile.user.person.address"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Phone</ion-label>
+      <ion-input [disabled]="edit" [value]="profile.user.person.phone"></ion-input>
     </ion-item>
   </ion-list>
 </ion-content>
+
+<ion-tab-bar slot="bottom" >
+  <ion-tab-button  >
+    <ion-icon name="arrow-back" routerLink="/admin"></ion-icon>
+    <ion-label>Regresar</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button >
+  <ion-icon name="create" routerLink='/edituser'></ion-icon>
+    <ion-label>Editar User</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button  >
+    <ion-icon name="camera" (click)="triggerFileInput()"></ion-icon>
+      <ion-label>Editar Foto</ion-label>
+    </ion-tab-button>
+
+  <ion-tab-button routerLink='/person' id="open-loading">
+    <ion-icon name="person" ></ion-icon>
+    <ion-label>{{ users }}</ion-label>
+  </ion-tab-button>
+
+  
+</ion-tab-bar>
+
 
 

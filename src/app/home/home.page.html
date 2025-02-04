@@ -1,65 +1,23 @@
 <ion-header [translucent]="true">
-  <ion-toolbar >
-    <ion-item>
-      <ion-input placeholder="search "></ion-input>
-      <ion-tab-button tab="home">
-        <ion-icon  name="search" ></ion-icon>
-      </ion-tab-button>
-    </ion-item>
-    
-    </ion-toolbar>
+  
 </ion-header>
 
 <ion-content [fullscreen]="true"  class="ion-padding">
   
-  <ion-card>
-    <div class="card-content">
-      <img src="assets/icon/bus_amarillo.png" alt="bus amarillo" class="large-image" />
-    <div class="text-content">
-      <h2>Salida: 08:30 AM</h2>
-      <p>Bus #120 to Downtown</p>
-      <p class="duration">Duración: 45 minutos</p>
+  <ion-content>
+    <div class="background">
+      <div class="header">
+        <div class="blob"></div>
       </div>
+      <div class="logo">
+        <img src="assets/icon/bus.png" alt="Bus Stop Logo" />
+      </div>
+      <h1 class="title">Bus stop</h1>
+      <ion-button expand="block" class="login-button" routerLink="/pag">Iniciar Sesión</ion-button>
+      <ion-button expand="block" class="signup-button" routerLink="/create">
+        Crear Cuenta
+      </ion-button>
     </div>
-  </ion-card>
-  
-  <ion-card>
-    <div class="card-content">
-      <img src="assets/icon/bus_illustration.png" alt="bus illustration" class="large-image" />
-        <div class="text-content">
-          <h2>Salida: 09:00 PM</h2>
-          <p>Bus #45 to Uptown</p>
-          <p class="duration">Duration: 30 mins</p>
-        </div>
-      </div>
-  </ion-card>
-  
-      <ion-card>
-        <div class="card-content">
-          <img src="assets/icon/bus_amarillo.png" alt="bus amarillo" class="large-image">
-        <div class="text-content">
-          <h2>Salida: 10:00 AM</h2>
-          <p>Bus #78 to Midtown</p>
-          <p class="duration">Duration: 40 mins</p>
-        </div>
-      </div>
-      </ion-card>
     
 </ion-content>
 
-<ion-tab-bar slot="bottom">
-  <ion-tab-button tab="close" routerLink='/pag'>
-    <ion-icon name="close"></ion-icon>
-    <ion-label>Cerrar</ion-label>
-  </ion-tab-button>
-
-  <ion-tab-button tab="envios">
-  <ion-icon name="mail"></ion-icon>
-    <ion-label>Envíos</ion-label>
-  </ion-tab-button>
-
-  <ion-tab-button routerLink='/person'>
-    <ion-icon name="person"></ion-icon>
-    <ion-label>{{ users }}</ion-label>
-  </ion-tab-button>
-</ion-tab-bar>

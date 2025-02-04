@@ -1,20 +1,23 @@
 import { Routes } from '@angular/router';
-import { person } from 'ionicons/icons';
+import { permissionGuard } from './guard/permission.guard';
+import { loginGuard } from './guard/login.guard';
 
 export const routes: Routes = [
   {
     path: 'home',
     loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
+    canActivate:[loginGuard]
   },
   {
     path: '',
-    redirectTo: 'pag',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   
   {
     path: 'pag',
-    loadComponent: () => import('./pag/pag.page').then( m => m.PagPage)
+    loadComponent: () => import('./pag/pag.page').then( m => m.PagPage),
+    //canActivate:[loginGuard]
   },
   {
     path: 'create',
@@ -34,7 +37,13 @@ export const routes: Routes = [
   },
   {
     path: 'ibus',
-    loadComponent: () => import('./ibus/ibus.page').then( m => m.IbusPage)
+    loadComponent: () => import('./ibus/ibus.page').then( m => m.IbusPage),
+    //canActivate:[permissionGuard ]
+
+  },
+  {
+    path: 'search',
+    loadComponent: () => import('./search/search.page').then( m => m.SearchPage)
   },
 
 ];

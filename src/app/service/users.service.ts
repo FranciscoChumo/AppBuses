@@ -9,6 +9,17 @@ import { throwError, Observable } from 'rxjs';
 export class UsersService {
 
   constructor(private http:HttpClient) { }
+
+  register(user:any,email:any,password:string,typeusers_id:number){
+    const re={
+      user:user,
+      email:email,
+      password:password,
+      typeusers_id:typeusers_id
+    }
+    return this.http.post('http://localhost:3000/api/register',re)
+  }
+
   login(email:any, password:string){
     const data={
       email:email,

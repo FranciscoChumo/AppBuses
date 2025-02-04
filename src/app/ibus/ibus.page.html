@@ -14,18 +14,28 @@
     <ion-item>
       <ion-label position="floating">Número</ion-label><br>
       <ion-input formControlName="Number" type="number"></ion-input>
-    </ion-item>
+    </ion-item><br>
+    <ion-item>
+      <ion-label position="floating">Terminal de Salida</ion-label><br>
+      <ion-input formControlName="terminal_arrival" type="text"></ion-input>
+    </ion-item><br>
 
     <ion-item>
-      <ion-label position="floating">Hora de Salida</ion-label><br>
-      <ion-datetime formControlName="departure_time" ngDefaultControl></ion-datetime>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Hora de Llegada</ion-label><br>
-      <ion-datetime formControlName="arrival_time" ngDefaultControl></ion-datetime>
-    </ion-item>
-
+      <ion-label position="floating">Terminal de Destino</ion-label><br>
+      <ion-input formControlName="terminal_destination" type="text"></ion-input>
+    </ion-item><br>
+    <div class="grid-container">
+      <div>
+        <ion-label style="color: red;">Hora de Salida</ion-label>
+        <ion-datetime presentation="time" formControlName="departure_time" display-format="HH:mm"></ion-datetime>
+      </div>
+    
+      <div>
+        <ion-label style="color: blue;">Hora de Llegada</ion-label>
+        <ion-datetime presentation="time" formControlName="arrival_time" display-format="HH:mm"></ion-datetime>
+      </div>
+    </div>
+ 
     <ion-item>
       <ion-label position="floating">Imagen</ion-label><br>
       <input type="file" (change)="onFileSelected($event)" />
@@ -36,3 +46,16 @@
     </ion-button>
   </form>
 </ion-content>
+<ion-tab-bar slot="bottom" >
+  <ion-tab-button  >
+    <ion-icon name="arrow-back" routerLink="/admin"></ion-icon>
+    <ion-label>Regresar</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button >
+    <ion-icon name="person" ></ion-icon>
+    <ion-label>{{ users }}</ion-label>
+  </ion-tab-button>
+
+  
+</ion-tab-bar>

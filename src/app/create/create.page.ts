@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonicModule,AlertController } from '@ionic/angular';
 import { RouterLink } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
-import { CreaterService } from '../service/creater.service';
 import { Router } from '@angular/router';
 import { home} from 'ionicons/icons';
 import { addIcons } from 'ionicons';
@@ -14,20 +12,19 @@ import{ chevronDownCircle,
   colorPalette,
   document,
   globe,}from 'ionicons/icons';
+import { UsersService } from '../service/users.service';
 @Component({
   selector: 'app-create',
   templateUrl: './create.page.html',
   styleUrls: ['./create.page.scss'],
   standalone: true,
   imports: [ IonicModule,  CommonModule, FormsModule,
-     HttpClientModule, ReactiveFormsModule,RouterLink],
-  providers:[CreaterService]
+     ReactiveFormsModule,RouterLink],
 })
 export class CreatePage  {
   registerForm:FormGroup;
   constructor(
-   
-    private create:CreaterService, 
+    private user:UsersService,
     private alert:AlertController,
     private form:FormBuilder,
     private router:Router 
@@ -39,51 +36,56 @@ export class CreatePage  {
       user:['',Validators.required],
       email:['',[Validators.required, Validators.email]],
       password:['',Validators.required],
+      typeusers_id: [2] // Valor predeterminado
     })
   }
  
 
-  async register(){
-  // Muestra una alerta para los campos vacíos
-    if(this.registerForm.invalid){
-      const alert=await this.alert.create({
-        header: 'Error',
-        message: 'Por favor, complete todos los campos',
-        buttons: ['OK'] 
-      });
-      await alert.present();
-      return;
-    }
-    //navegacion entre pagina
-    this.router.navigate(['/home']);
-    const {user, email, password}=this.registerForm.value;
-    this.create.register(user,email,password) .subscribe({
-      next:async (data:any)=>{
-      if(data&&data.token){
+  async register() {
+    // Muestra una alerta para los campos vacíos
+    if (this.registerForm.invalid) {
         const alert = await this.alert.create({
-        header:'Success!' , 
-        message:'register successful',
-        buttons:['OK']
-      }); 
-      await alert.present();
-      if (email.includes('@admin.com')) {
-        this.router.navigate(['/admin']);
-      } else {
-        this.router.navigate(['/home']);
-      }
-      }
-    },
-      error:async(error:any)=>{
-      console.error("error register",error);
-      const alert = await this.alert.create({
-        header:'Error',
-        message:'Ocurred un error en el register',
-        buttons:['OK']
-      });
-      await alert.present();
-      this.registerForm.reset(); // Restablece todos los campos del formulario
+            header: 'Error',
+            message: 'Por favor, complete todos los campos',
+            buttons: ['OK']
+        });
+        await alert.present();
+        return;
+    }
 
-    },
+    // Navegación entre páginas
+    const { user, email, password } = this.registerForm.value;
+
+    // Agregar typeusers_id manualmente con valor predeterminado de 2
+    const typeusers_id = 2;
+
+    this.user.register(user, email, password, typeusers_id).subscribe({
+        next: async (data: any) => {
+            if (data && data.token) {
+                const alert = await this.alert.create({
+                    header: 'Success!',
+                    message: 'Register successful',
+                    buttons: ['OK']
+                });
+                await alert.present();
+
+                // Navegar a la página de admin después del registro
+                this.router.navigate(['/admin']);
+            }
+        },
+        error: async (error: any) => {
+            console.error("error register", error);
+            const alert = await this.alert.create({
+                header: 'Error',
+                message: '  error en el register',
+                buttons: ['OK']
+            });
+            await alert.present();
+        }
     });
-  }
+
+    // Restablece todos los campos del formulario
+    this.registerForm.reset();
+}
+
 }

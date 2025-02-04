@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class PersonService {
 
   constructor(private http: HttpClient) { }
-  updatePerson(id:any,name:string, lastname:string,ci:string,address:string, phone:string){
+  updatePerson(id:any, name:string, lastname:string, ci:string, address:string, phone:any){
     const data ={
       id:id,
       name:name,
@@ -19,22 +19,13 @@ export class PersonService {
     }
     const header = new HttpHeaders()
     .set('Authorization', `Bearer ${localStorage.getItem('token')}`);
-    return this.http.put<any>(`http://127.0.0.1:3000/api/person/${id}`, data, { headers:header });
+    return this.http.put<any>('http://127.0.0.1:3000/api/person/'+id, data, { headers: header });
   }
-  avatarI(id: number, file: File): Observable<any> {
-    const formData: FormData = new FormData();
-    formData.append('avatar', file, file.name); // Agrega el archivo al formulario
-    formData.append('id', id.toString()); // Incluye el ID como parte de los datos enviados
-  
-    const header = new HttpHeaders()
-      .set('Authorization', `Bearer ${localStorage.getItem('token')}`); // Agrega el token de autorización
-  
-    return this.http.post<any>('http://127.0.0.1:3000/api/upload' + id, formData, { headers: header });
-  }
-  
-  getAvatar(id: number): Observable<any> {
-    return this.http.get<any>(`http://127.0.0.1:3000/api/avatar/${id}`);
-  }
-  
-  
+  updateImage(id:any, image:any){
+    const data = new FormData();
+    data.append('file', image);
+   // const header = new HttpHeaders()
+   // .set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    return this.http.put<any>('http://127.0.0.1:3000/api/update/image/'+id, data);     
+  }    
 }
