@@ -21,10 +21,10 @@
       </div>
       @if (idtu==1) {
         <div class="buttons-container">
-          <ion-button color="warning" fill="outline" class="small-button">
+          <ion-button color="warning" fill="outline" class="small-button" (click)="editBus(bus.id)">
             <ion-icon slot="icon-only" name="create"></ion-icon>
           </ion-button>
-          <ion-button color="danger" fill="outline" class="small-button">
+          <ion-button color="danger" fill="outline" class="small-button" (click)="deleteBus(bus.id)">
             <ion-icon slot="icon-only" name="trash"></ion-icon>
           </ion-button>
         </div>

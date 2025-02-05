@@ -61,7 +61,9 @@ this.user.login(email, password).subscribe({
         buttons: ['OK']
       });
       await alert.present();
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/admin']).then(() => {
+        // Refresca la página después de la navegación
+        window.location.reload() });;;
     }
   },
   error: async (error:any) => {

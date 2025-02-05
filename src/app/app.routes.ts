@@ -6,7 +6,7 @@ export const routes: Routes = [
   {
     path: 'home',
     loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
-    canActivate:[loginGuard]
+    //canActivate:[loginGuard]
   },
   {
     path: '',
@@ -38,12 +38,15 @@ export const routes: Routes = [
   {
     path: 'ibus',
     loadComponent: () => import('./ibus/ibus.page').then( m => m.IbusPage),
-    //canActivate:[permissionGuard ]
-
+    canActivate:[permissionGuard ]
   },
   {
     path: 'search',
     loadComponent: () => import('./search/search.page').then( m => m.SearchPage)
+  },
+  {
+    path: 'editbus',
+    loadComponent: () => import('./editbus/editbus.page').then( m => m.EditbusPage)
   },
 
 ];

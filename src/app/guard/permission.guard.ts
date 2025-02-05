@@ -8,7 +8,7 @@ export class permissionGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const idtu = localStorage.getItem('idtu');
-    if (idtu != "2") {
+    if (idtu != "1") {
       this.router.navigate(['/admin']);
       return false;
     }

@@ -1,0 +1,15 @@
+.image-container {
+  width: 300px;          /* Ancho del cuadro */
+  height: 200px;         /* Alto del cuadro */
+  border-radius: 10px;   /* Bordes redondeados */
+  overflow: hidden;      /* Oculta el desbordamiento de la imagen */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle un efecto moderno */
+  margin: 10px auto;     /* Centrar horizontalmente */
+}
+
+.bus-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* ✅ La imagen se ajusta al cuadro manteniendo la proporción */
+  object-position: center; /* Centra la imagen dentro del cuadro */
+}

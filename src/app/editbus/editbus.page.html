@@ -1,0 +1,84 @@
+
+
+<ion-content>
+  <div class="image-container">
+      <img
+      src="http://localhost:3000/uploads/bus/{{ Bus.bus.image }}" alt="Bus Image" class="bus-image" />
+  </div><br>
+  <input type="file" #fileInput (change)="updateImg($event)" accept="image/*" hidden>
+
+
+    <ng-container *ngIf="Bus?.bus; ">
+      <ion-item>
+        <ion-label position="stacked">Nombre del Autobús</ion-label><br>
+        <ion-input [(ngModel)]="Bus.bus.buss" name="buss"></ion-input>
+      </ion-item>
+    </ng-container>
+    
+    <ng-container *ngIf="Bus?.bus;">
+      <ion-item>
+        <ion-label position="stacked">Número</ion-label><br>
+        <ion-input [(ngModel)]="Bus.bus.Number" name="Number"></ion-input>
+      </ion-item>
+    </ng-container>
+    
+    <ng-container  *ngIf="Bus?.bus;">
+      <ion-item>
+        <ion-label position="stacked">Terminal de Salida</ion-label><br>
+        <ion-input [(ngModel)]="Bus.bus.terminal_arrival" name="terminal_arrival"></ion-input>
+      </ion-item>
+    </ng-container>
+    
+    <ng-container  *ngIf="Bus?.bus;">
+      <ion-item>
+        <ion-label position="stacked">Terminal de Destino</ion-label><br>
+        <ion-input [(ngModel)]="Bus.bus.terminal_destination" name="terminal_destination"></ion-input>
+      </ion-item>
+    </ng-container>
+
+    <ng-container  *ngIf="Bus?.bus;">
+      <div class="grid-container">
+        <div>
+          <ion-label style="color: red;">Hora de Salida</ion-label>
+          <ion-datetime
+          presentation="time"
+          [value]="Bus.bus.departure_time || ''"
+          (ionChange)="setDepartureTime($event)"
+          display-format="HH:mm"
+        ></ion-datetime>
+        </div>
+      
+        <div>
+          <ion-label style="color: blue;">Hora de Llegada</ion-label>
+          <ion-datetime
+          presentation="time"
+          [value]="Bus.bus.arrival_time || ''"
+          (ionChange)="setArrivalTime($event)"
+          display-format="HH:mm"
+        ></ion-datetime>
+        </div>
+      </div>
+    </ng-container>
+    
+  
+</ion-content>
+<ion-tab-bar slot="bottom">
+  <ion-tab-button tab="checkmark" (click)="updateBus()">
+    <ion-icon name="checkmark" style="color: rgb(15, 1, 163);"></ion-icon>
+    <ion-label>Aceptar</ion-label>
+  </ion-tab-button>
+  
+  <ion-tab-button  >
+    <ion-icon name="camera" (click)="triggerFileInput()"></ion-icon>
+      <ion-label>Editar Foto</ion-label>
+    </ion-tab-button>
+
+  <ion-tab-button tab="close" routerLink='/admin' >
+  <ion-icon name="close" style="color: rgb(234, 11, 19);"></ion-icon>
+    <ion-label>Cancelar</ion-label>
+  </ion-tab-button>
+
+
+  
+  
+</ion-tab-bar>
