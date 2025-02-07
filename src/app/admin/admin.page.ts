@@ -83,6 +83,9 @@ buses: any[] = [];
     });
   }
 }
-
+Cerrar(){
+  localStorage.clear();
+  this.router.navigate(['/home']);
+}
   
 }

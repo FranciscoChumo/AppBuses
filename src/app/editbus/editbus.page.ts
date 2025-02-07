@@ -18,7 +18,7 @@ import{ chevronDownCircle,
   templateUrl: './editbus.page.html',
   styleUrls: ['./editbus.page.scss'],
   standalone: true,
-  imports: [IonAvatar, IonDatetime,RouterLink, IonInput, IonIcon, IonTabButton,FormsModule, IonTabBar,  IonItem, IonLabel, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [ IonDatetime,RouterLink, IonInput, IonIcon, IonTabButton,FormsModule, IonTabBar,  IonItem, IonLabel, IonContent,  CommonModule, FormsModule]
 })
 export class EditbusPage implements OnInit {
   @ViewChild('fileInput', { static: false }) fileInput!: ElementRef;
