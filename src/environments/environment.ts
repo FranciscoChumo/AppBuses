@@ -4,8 +4,16 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://127.0.0.1:3000/api' // URL base de tu API
-
+  apiUrl: 'http://127.0.0.1:3000/api', // URL base de tu API
+  firebaseConfig : {
+    apiKey: "AIzaSyAxiXVyZoX8eboP8z-iLEQdDMbQjy3kXDk",
+    authDomain: "appp-e5f97.firebaseapp.com",
+    projectId: "appp-e5f97",
+    storageBucket: "appp-e5f97.firebasestorage.app",
+    messagingSenderId: "137874583025",
+    appId: "1:137874583025:web:f4d743ce429614aac96850"
+  }
+  
 };
 
 /*

@@ -81,3 +81,31 @@ ion-input {
 .signup-link a:hover {
   text-decoration: underline;
 }
+.center-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  gap: 10px; /* Espacio entre botones */
+  margin-top: 20px; /* Ajusta según necesites */
+}
+
+.custom-button {
+  --background: transparent !important;
+  --box-shadow: none !important;
+  --border: none !important;
+  width: auto;
+  height: auto;
+  padding: 0;
+  min-width: unset;
+  min-height: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-button img {
+  width: 40px; /* Ajusta el tamaño según necesites */
+  height: 40px;
+}
+
+

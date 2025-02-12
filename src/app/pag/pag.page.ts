@@ -5,6 +5,7 @@ import { IonicModule, AlertController } from '@ionic/angular';
 import { UsersService } from '../service/users.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { FireService } from '../service/fire.service';
 
 @Component({
   selector: 'app-pag',
@@ -21,8 +22,8 @@ constructor(
 private user:UsersService,
 private alert:AlertController,
 private formBuilder:FormBuilder,
-private router:Router 
-
+private router:Router, 
+private fireService:FireService
 ) { 
 this.registerForm = this.formBuilder.group({
   email:['',Validators.required, Validators.email],
@@ -32,7 +33,45 @@ this.registerForm = this.formBuilder.group({
 
 ngOnInit() {
 }
-
+async loginWithFacebook() {
+  try {
+    await this.fireService.loginWithFacebook();
+    this.router.navigateByUrl('admin');
+  } catch (error) {
+    const alert = await this.alert.create({
+      header: 'Error',
+      message: 'Error al iniciar sesión con Facebook',
+      buttons: ['Ok'],
+    });
+    await alert.present();
+  }
+}
+async loginWithGoogle() {
+  try {
+    await this.fireService.loginWithGoogle();
+    this.router.navigateByUrl('admin');
+  } catch (error) {
+    const alert = await this.alert.create({
+      header: 'Error',
+      message: 'Error al iniciar sesión con Google',
+      buttons: ['Ok'],
+    });
+    await alert.present();
+  }
+}
+async loginWithGithub(){
+  try {
+    await this.fireService.loginWithGithub();
+    this.router.navigateByUrl('admin');
+    } catch (error) {
+      const alert = await this.alert.create({
+        header: 'Error',
+        message: 'Error al iniciar sesión con Github',
+        buttons: ['Ok'],
+        });
+        await alert.present();
+        }
+}
 async login(){
 if(this.registerForm.invalid){
   const alert=await this.alert.create({
